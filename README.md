@@ -237,3 +237,72 @@ Este comando desfaz o último commit e descarta todas as alterações locais.​
 - Repositórios Compartilhados: Evite usar git reset em branches compartilhadas, pois isso reescreve o histórico e pode causar conflitos para outros colaboradores.
 - Alternativas Seguras: Para desfazer commits sem reescrever o histórico, considere usar git revert, que cria um novo commit que desfaz as alterações do commit anterior.​
 gitkraken.com
+
+
+# Branch
+Uma branch no Git representa uma linha independente de desenvolvimento dentro de um repositório. Ela permite que você trabalhe em novas funcionalidades, correções ou experimentações sem afetar diretamente o código principal, geralmente localizado na branch main ou master.​ 
+
+![alt text](image.png)
+
+
+No Git, uma branch é essencialmente um ponteiro para um commit específico. Quando você cria uma nova branch, está criando uma nova linha de desenvolvimento que pode evoluir independentemente das outras. Isso é particularmente útil em ambientes colaborativos, onde diferentes desenvolvedores podem trabalhar simultaneamente em diversas funcionalidades sem interferência mútua.
+
+
+
+| Situação                               |                        Sem Git                        |                Com Git (Utilizando Branches)                 |
+| :------------------------------------- | :---------------------------------------------------: | :----------------------------------------------------------: |
+| Desenvolvimento de nova funcionalidade |    Cópia manual dos arquivos para evitar conflitos    |       Criação de uma nova branch para desenvolvimento        |
+| Correção de bugs urgentes              | Dificuldade em isolar e aplicar correções rapidamente | Criação de branch específica para correção e merge posterior |
+| Colaboração em equipe                  |  Risco de sobrescrever alterações de outros membros   |          Cada membro trabalha em sua própria branch          |
+
+
+
+### 🛠️ Comandos Básicos de Branch no Git
+| Comando                          |                     Descrição                     |
+| :------------------------------- | :-----------------------------------------------: |
+| ``git branch                       ``|          Lista todas as branches locais           |
+| ``git branch <nome-da-branch>      ``|   Cria uma nova branch com o nome especificado    |
+| ``git checkout <nome-da-branch>    ``|        Alterna para a branch especificada         |
+| ``git checkout -b <nome-da-branch> ``|         Cria e alterna para a nova branch         |
+| ``git merge <nome-da-branch>       ``|   Mescla a branch especificada na branch atual    |
+| ``git branch -d <nome-da-branch>   ``| Deleta a branch especificada (se já foi mesclada) |
+
+
+
+
+Fluxo de Trabalho com Branches
+1. Criação de uma nova branch: Para iniciar o desenvolvimento de uma nova funcionalidade ou correção, crie uma nova branch a partir da branch principal.​
+
+```git checkout -b nova-funcionalidade```
+
+
+2. Desenvolvimento: Realize as alterações necessárias na nova branch.​
+
+3. Commit das alterações: Após concluir as alterações, faça o commit.​
+
+```
+git add .
+git commit -m "Implementa nova funcionalidade"
+```
+4. Mesclagem com a branch principal: Após testar e validar as alterações, mescle a nova branch com a branch principal.​
+
+```
+git checkout main
+git merge nova-funcionalidade
+```
+
+
+5. Deleção da branch: Se a branch não for mais necessária, pode ser deletada.​
+
+``git branch -d nova-funcionalidade``
+
+
+
+
+
+
+
+
+
+# 📚 Referências:
+
