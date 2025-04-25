@@ -153,3 +153,38 @@ git remote add origin https://github.com/alexsandro-matias/git
 
 git push -u origin main
 
+
+
+# Recebendo alterações 
+
+git pull 
+
+sincronização dos arquivos com o servidor remoto seguindo para o servidor local.
+
+
+# Clonando Repositórios
+
+git clone - link repositorio 
+
+mas se quiser que não crie uma pasta nova, e sim na pasta atual,  git clone - link repositorio **.**
+
+
+
+# Acessando Logs
+
+git log
+
+
+
+# Revertando arquivos
+
+rollback do arquivo no repositório antes do estado de Modificado
+
+git checkout index.html
+
+
+
+# Ignorando arquivos
+gitignore
+
+
