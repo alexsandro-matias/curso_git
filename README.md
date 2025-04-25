@@ -144,5 +144,12 @@ A combinação desses comandos permite uma visão abrangente do ciclo de vida do
 git commit, git push. 
 
 
-# Github 
+# Github
+git branch -M main
+
+
+git remote add origin https://github.com/alexsandro-matias/git.git
+
+
+git push -u origin main
 
