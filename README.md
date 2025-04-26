@@ -258,14 +258,14 @@ No Git, uma branch é essencialmente um ponteiro para um commit específico. Qua
 
 
 ### 🛠️ Comandos Básicos de Branch no Git
-| Comando                          |                     Descrição                     |
-| :------------------------------- | :-----------------------------------------------: |
-| ``git branch                       ``|          Lista todas as branches locais           |
-| ``git branch <nome-da-branch>      ``|   Cria uma nova branch com o nome especificado    |
-| ``git checkout <nome-da-branch>    ``|        Alterna para a branch especificada         |
-| ``git checkout -b <nome-da-branch> ``|         Cria e alterna para a nova branch         |
-| ``git merge <nome-da-branch>       ``|   Mescla a branch especificada na branch atual    |
-| ``git branch -d <nome-da-branch>   ``| Deleta a branch especificada (se já foi mesclada) |
+| Comando                               |                     Descrição                     |
+| :------------------------------------ | :-----------------------------------------------: |
+| ``git branch                       `` |          Lista todas as branches locais           |
+| ``git branch <nome-da-branch>      `` |   Cria uma nova branch com o nome especificado    |
+| ``git checkout <nome-da-branch>    `` |        Alterna para a branch especificada         |
+| ``git checkout -b <nome-da-branch> `` |         Cria e alterna para a nova branch         |
+| ``git merge <nome-da-branch>       `` |   Mescla a branch especificada na branch atual    |
+| ``git branch -d <nome-da-branch>   `` | Deleta a branch especificada (se já foi mesclada) |
 
 
 
@@ -298,6 +298,84 @@ git merge nova-funcionalidade
 
 
 
+## Mesclando Branches
+git merge 
+
+
+​O comando git merge é uma ferramenta fundamental no Git, utilizada para integrar alterações de diferentes branches em uma única linha de desenvolvimento. Esse processo é essencial para consolidar o trabalho de múltiplos desenvolvedores ou para incorporar funcionalidades desenvolvidas separadamente.​
+
+## 🧭 Fluxo de Trabalho com git merge
+
+1. Criar e alternar para uma nova branch de funcionalidade:
+
+```git checkout -b nova-funcionalidade```
+
+2. Desenvolver a funcionalidade e realizar commits:
+```
+git add .
+git commit -m "Implementa nova funcionalidade"
+```
+
+3. Alternar de volta para a branch principal (main):
+   
+```git checkout main```
+
+
+4. Mesclar a branch de funcionalidade na branch principal:
+
+```git merge nova-funcionalidade```
+
+
+5. Resolver conflitos, se houver, e finalizar o merge:
+```
+# Editar os arquivos com conflitos
+git add arquivos_resolvidos
+git commit
+```
+
+
+
+![alt text](image-1.png)
+
+
+
+Dependendo das funcionalidades é necessária a permissão ma mescla dessa funcionalidade nova com branch principal. Por isso, um exemplo mais completo desse fluxo de mescla de ramificações é o abaixo:
+
+![alt text](image-2.png)
+
+## 🔀 Tipos de Merge
+O Git suporta diferentes estratégias de merge, dependendo do histórico das branches envolvidas:​
+
+- Fast-forward: Ocorre quando a branch atual não possui commits adicionais desde que a outra branch foi criada. Nesse caso, o ponteiro da branch é simplesmente avançado para o commit mais recente da outra branch.​
+  
+- Merge com commit de merge: Utilizado quando as branches divergiram. O Git cria um novo commit que une os históricos das duas branches.​
+
+
+## ⚠️ Conflitos de Merge
+Conflitos de merge surgem quando alterações incompatíveis são feitas nas mesmas linhas de um arquivo em diferentes branches. Nesses casos, o Git não consegue mesclar automaticamente e requer intervenção manual para resolver os conflitos.​ Exemplo de passo a passo para resolução de conflito:
+
+1. Identificar os arquivos em conflito:
+
+```git status```
+
+2. Editar os arquivos para resolver os conflitos, removendo as marcações do Git e mantendo o conteúdo desejado.
+
+
+3. Alternar de volta para a branch principal (main):
+   
+```git add arquivo_resolvido```
+
+
+4. Finalizar o merge:​
+
+```git commit```
+
+
+
+
+
+
+
 
 
 
@@ -305,4 +383,10 @@ git merge nova-funcionalidade
 
 
 # 📚 Referências:
+
+Para aprofundar seus conhecimentos sobre o git merge, recomendo os seguintes recursos:
+
+Documentação Oficial do Git
+
+Tutorial da Atlassian sobre git merge
 
