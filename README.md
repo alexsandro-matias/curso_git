@@ -1,4 +1,59 @@
-# Iniciando repositório (repo)
+## Índice
+
+1. [História do Controle de Versão](#história-do-controle-de-versão)  
+   1.1. Sistemas de Versionamento Centralizado  
+   1.2. Surgimento dos Sistemas Distribuídos  
+   1.3. Principais Marcos Históricos (RCS, CVS, SVN)  
+2. [Necessidade de Criação do Git](#necessidade-de-criação-do-git)  
+   2.1. Limitações de Ferramentas Anteriores  
+   2.2. Performance e Escalabilidade  
+   2.3. Fluxo de Trabalho Colaborativo Distribuído  
+   2.4. Segurança e Integridade do Histórico  
+3. [Instalação do Git](#instalação-do-git)  
+   3.1. Windows  
+   3.2. macOS  
+   3.3. Linux  
+   &emsp;3.3.1. Debian / Ubuntu  
+   &emsp;3.3.2. Fedora / Red Hat  
+   &emsp;3.3.3. Arch Linux  
+   3.4. Outros Sistemas (Homebrew, Snap, Chocolatey)  
+   3.5. Verificação e Configuração Inicial  
+4. [Iniciando o Repositório](#iniciando-o-repositório)  
+5. [Criando um Repositório](#criando-um-repositório)  
+6. [Verificando Alterações](#verificando-alterações)  
+   6.1. Estados de Arquivos no Git  
+7. [Comandos para Verificação de Alterações](#comandos-para-verificação-de-alterações)  
+8. [Salvando Arquivos no Repositório](#salvando-arquivos-no-repositório)  
+9. [Configuração do GitHub](#configuração-do-github)  
+10. [Recebendo Alterações](#recebendo-alterações)  
+11. [Clonando Repositórios](#clonando-repositórios)  
+12. [Acessando Logs](#acessando-logs)  
+13. [Revertendo Arquivos](#revertendo-arquivos)  
+14. [Ignorando Arquivos](#ignorando-arquivos)  
+15. [Resetando Arquivos da Branch](#resetando-arquivos-da-branch)  
+16. [Git Reset](#git-reset)  
+    16.1. Atalhos (Workspace)  
+    16.2. Detalhamento das Opções  
+    16.3. Considerações Importantes  
+17. [Branches](#branches)  
+    17.1. Conceito  
+    17.2. Comandos Básicos de Branch  
+    17.3. Fluxo de Trabalho com Branches  
+18. [Mesclando Branches](#mesclando-branches)  
+19. [Git Stash](#git-stash)  
+    19.1. Introdução ao Git Stash  
+    19.2. Fluxo de Trabalho com Git Stash  
+    19.3. Comandos Comuns do Git Stash  
+    19.4. Considerações Importantes  
+    19.5. Recursos Adicionais  
+
+
+
+
+
+
+
+#Iniciando repositório
 Ele cria uma pasta oculta chamada ``.git`` dentro do diretório do seu projeto, onde são armazenadas todas as informações de controle de versão, como histórico de commits e configurações.
 Como usar git init
 - Criar um novo repositório Git
@@ -458,7 +513,7 @@ Untracked Files: Por padrão, git stash não inclui arquivos não rastreados. Pa
 
 Para aprofundar seus conhecimentos sobre o git merge, recomendo os seguintes recursos:
 
-Documentação Oficial do Git
+- [Documentação Oficial do Git]([https://git-scm.com/)
 
 Tutorial da Atlassian sobre git merge
 
