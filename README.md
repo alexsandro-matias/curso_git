@@ -375,6 +375,81 @@ Conflitos de merge surgem quando alterações incompatíveis são feitas nas mes
 
 
 
+# Uso do git stash
+
+Buscar a última versão da main e, ao mesmo tempo, ter a possibilidae re retornar para versão em que estou trabalhando. Neste processo, ele cria um ID desse stash referenciando este commit. Para verifcar os stashes criado, usar o comando:
+
+$ git stash list
+stash@{0}: WIP on teste: d74fbb5 criando uma ramificação apenas para testes
+
+
+
+# Revertando o stash
+Para retornar a stash que teremos a certeza que queremos voltar, usaremos justamente o ID da respectiva stash usando o comando ``apply``. 
+
+Para verificar as diferenças entre do stash:
+
+`` git stash show -p 0
+``
+
+
+
+
+
+🧳 Introdução ao git stash
+O comando git stash é uma ferramenta poderosa do Git que permite salvar temporariamente alterações não commitadas no seu diretório de trabalho. Isso é especialmente útil quando você precisa alternar rapidamente entre tarefas ou branches sem perder o progresso atual.​
+
+🔄 Fluxo de Trabalho com git stash
+Imagine que você está desenvolvendo uma nova funcionalidade na branch feature/nova-funcionalidade, mas precisa interromper esse trabalho para corrigir um bug urgente na branch main. Utilizando o git stash, você pode armazenar temporariamente suas alterações, mudar para a branch principal, corrigir o bug e, posteriormente, retornar ao seu trabalho anterior.​
+
+
+```
+
+# Verifique o status atual
+git status
+
+# Salve as alterações não commitadas
+git stash
+
+# Mude para a branch principal
+git checkout main
+
+# Corrija o bug e faça o commit
+# ...
+
+# Retorne à branch de funcionalidade
+git checkout feature/nova-funcionalidade
+
+# Reaplique as alterações stashed
+git stash pop
+
+```
+
+
+🧰 Comandos Comuns do git stash
+
+Comando	Descrição
+git stash	Salva alterações atuais e limpa o diretório de trabalho
+git stash list	Lista todas as stashes salvas
+git stash show	Mostra as alterações de uma stash específica
+git stash apply	Reaplica uma stash sem removê-la da lista
+git stash pop	Reaplica a stash mais recente e a remove da lista
+git stash drop stash@{n}	Remove uma stash específica da lista
+git stash clear	Remove todas as stashes
+git stash branch <nome>	Cria uma nova branch a partir de uma stash
+🎯 Considerações Importantes
+Escopo Local: As stashes são armazenadas localmente e não são compartilhadas com o repositório remoto.​
+
+Untracked Files: Por padrão, git stash não inclui arquivos não rastreados. Para incluí-los, utilize git stash -u ou git stash --include-untracked.​
+
+Conflitos: Ao reaplicar uma stash, podem ocorrer conflitos se o estado atual do repositório tiver divergido significativamente desde o momento do stash. Esteja preparado para resolvê-los manualmente.​
+
+📚 Recursos Adicionais
+Documentação Oficial do Git sobre git stash
+
+Tutorial da Atlassian sobre git stash
+
+Guia Prático do Opensource.com sobre git stash
 
 
 
