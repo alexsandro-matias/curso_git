@@ -426,32 +426,29 @@ git stash pop
 ```
 
 
-🧰 Comandos Comuns do git stash
+## 🧰 Comandos Básicos do git stash
 
-Comando	Descrição
-git stash	Salva alterações atuais e limpa o diretório de trabalho
-git stash list	Lista todas as stashes salvas
-git stash show	Mostra as alterações de uma stash específica
-git stash apply	Reaplica uma stash sem removê-la da lista
-git stash pop	Reaplica a stash mais recente e a remove da lista
-git stash drop stash@{n}	Remove uma stash específica da lista
-git stash clear	Remove todas as stashes
-git stash branch <nome>	Cria uma nova branch a partir de uma stash
-🎯 Considerações Importantes
-Escopo Local: As stashes são armazenadas localmente e não são compartilhadas com o repositório remoto.​
-
-Untracked Files: Por padrão, git stash não inclui arquivos não rastreados. Para incluí-los, utilize git stash -u ou git stash --include-untracked.​
-
-Conflitos: Ao reaplicar uma stash, podem ocorrer conflitos se o estado atual do repositório tiver divergido significativamente desde o momento do stash. Esteja preparado para resolvê-los manualmente.​
-
-📚 Recursos Adicionais
-Documentação Oficial do Git sobre git stash
-
-Tutorial da Atlassian sobre git stash
-
-Guia Prático do Opensource.com sobre git stash
+| Comando                  |                        Descrição                        |
+| :----------------------- | :-----------------------------------------------------: |
+| git stash                | Salva alterações atuais e limpa o diretório de trabalho |
+| git stash list           |              Lista todas as stashes salvas              |
+| git stash show           |      Mostra as alterações de uma stash específica       |
+| git stash apply          |        Reaplica uma stash sem removê-la da lista        |
+| git stash pop            |    Reaplica a stash mais recente e a remove da lista    |
+| git stash drop stash@{n} |          Remove uma stash específica da lista           |
+| git stash clear          |                 Remove todas as stashes                 |
+| git stash branch         |    <nome>	Cria uma nova branch a partir de uma stash    |
 
 
+
+
+## 🎯 Considerações Importantes:
+
+- Escopo Local: As stashes são armazenadas localmente e não são compartilhadas com o repositório remoto.​
+
+Untracked Files: Por padrão, git stash não inclui arquivos não rastreados. Para incluí-los, utilize`` git stash -u `` ou ``git stash --include-untracked``.​
+
+- Conflitos: Ao reaplicar uma stash, podem ocorrer conflitos se o estado atual do repositório tiver divergido significativamente desde o momento do stash. Esteja preparado para resolvê-los manualmente.​
 
 
 
@@ -465,3 +462,9 @@ Documentação Oficial do Git
 
 Tutorial da Atlassian sobre git merge
 
+
+Documentação Oficial do Git sobre git stash
+
+Tutorial da Atlassian sobre git stash
+
+Guia Prático do Opensource.com sobre git stash
