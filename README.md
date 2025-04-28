@@ -18,7 +18,7 @@
    &emsp;3.3.3. Arch Linux  
    3.4. Outros Sistemas (Homebrew, Snap, Chocolatey)  
    3.5. Verificação e Configuração Inicial  
-4. [Iniciando o Repositório](#iniciando-o-repositório)  
+4. [Iniciando o Repositório](#criando-um-repositório)
 5. [Criando um Repositório](#criando-um-repositório)  
 6. [Verificando Alterações](#verificando-alterações)  
    6.1. Estados de Arquivos no Git  
@@ -184,10 +184,7 @@ git clean: remove arquivos não rastreados do diretório de trabalho, útil para
 Graphite.dev
 .
 
-git reset --hard HEAD: reverte diretório de trabalho e staging ao estado exato do último commit, descartando modificações locais 
-Reddit
-.
-A combinação desses comandos permite uma visão abrangente do ciclo de vida dos arquivos e do histórico de revisões em um repositório Git 
+>git reset --hard HEAD: reverte diretório de trabalho e staging ao estado exato do último commit, descartando modificações locais. A combinação desses comandos permite uma visão abrangente do ciclo de vida dos arquivos e do histórico de revisões em um repositório Git 
 
 
 
@@ -291,7 +288,7 @@ Este comando desfaz o último commit e descarta todas as alterações locais.​
 gitkraken.com
 
 
-# Branch
+# Branches
 Uma branch no Git representa uma linha independente de desenvolvimento dentro de um repositório. Ela permite que você trabalhe em novas funcionalidades, correções ou experimentações sem afetar diretamente o código principal, geralmente localizado na branch main ou master.​ 
 
 ![alt text](image.png)
@@ -588,7 +585,7 @@ git diff origin/main
 ```
 
 
-```
+```bash
 # Realiza o merge manual das mudanças
 git merge origin/main
 ```
@@ -596,7 +593,7 @@ git merge origin/main
 
 ### Exemplo 2: Usando git pull
 
-```
+```bash
 # Busca e integra automaticamente as mudanças da branch remota
 git pull origin main
 ```
@@ -620,20 +617,16 @@ Resumo:
 
 
 
+# Pendências:
+- [ ] Ordenar os índices
+
 
 
 
 # 📚 Referências:
 
-Para aprofundar seus conhecimentos sobre o git merge, recomendo os seguintes recursos:
+- [Documentação Oficial do Git](https://git-scm.com/)
 
-- [Documentação Oficial do Git]([https://git-scm.com/)
+- [Tutorial da Atlassian](https://www.atlassian.com/git)
 
-Tutorial da Atlassian sobre git merge
-
-
-Documentação Oficial do Git sobre git stash
-
-Tutorial da Atlassian sobre git stash
-
-Guia Prático do Opensource.com sobre git stash
+- [Guia Prático do Opensource.com](https://opensource.com/downloads/git-tricks-tips) 
