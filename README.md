@@ -45,10 +45,7 @@
     19.2. Fluxo de Trabalho com Git Stash  
     19.3. Comandos Comuns do Git Stash  
     19.4. Considerações Importantes  
-    19.5. Recursos Adicionais  
-
-
-
+    19.5. Recursos Adicionais
 
 
 
@@ -504,6 +501,123 @@ git stash pop
 Untracked Files: Por padrão, git stash não inclui arquivos não rastreados. Para incluí-los, utilize`` git stash -u `` ou ``git stash --include-untracked``.​
 
 - Conflitos: Ao reaplicar uma stash, podem ocorrer conflitos se o estado atual do repositório tiver divergido significativamente desde o momento do stash. Esteja preparado para resolvê-los manualmente.​
+
+
+# Uso de tags
+Utilizada para marcar versões como uma realease ou uma versão disponibilizada com determinada característica - Beta ou versão final.
+
+
+``git tag -a v1.0 -m "versão do sistema"
+``
+
+Uma vez criada a tag, para visualizar o conteúdo (metadados) da tag, usaremos o comando: 
+
+``
+git show v1.0 
+
+``
+
+Para alternar entre as tags, usamos o mesmo comando para chavear entre as branches: 
+
+``
+git checkout v1.0 
+
+``
+
+
+para enviar as Tags, usa a mesma lógica de um commit:
+
+``
+git push origin v1.0 
+
+``
+
+Já para enviar todas a tags:
+
+``
+git push origin --tags
+``
+
+
+
+# Encontrando branches
+
+Para verificar se há ou não branches diferenças entre a remota e a local, caso houver, ele sincroniza os dois repositórios:
+
+``
+git fetch -a
+``
+
+## 🔄 Diferença entre git fetch -a e git pull
+### 📌 git fetch -a
+O comando git fetch é utilizado para buscar atualizações do repositório remoto, atualizando as referências locais das branches remotas. A opção -a não é uma opção válida para o git fetch. Talvez tenha havido uma confusão com git fetch --all, que busca atualizações de todos os remotos configurados.​
+
+Nota: git fetch -a não é um comando válido. O correto seria git fetch --all.​
+
+### 📌 git pull
+O comando git pull é uma combinação de dois comandos: git fetch seguido de git merge. Ele busca as atualizações do repositório remoto e as integra automaticamente na branch atual.​
+DevSecOps AI Platform
+
+📊 Comparativo entre git fetch --all e git pull
+
+
+| Aspecto                   |                 ``git fetch --all``                 |                  ``git pull ``                  |
+| :------------------------ | :-------------------------------------------------: | :---------------------------------------------: |
+| Atualiza branches remotas |                     ✅ Atualiza                      |                   ✅ Atualiza                    |
+| Atualiza branch atual     |                      ❌ Mantém                       |                   ✅ Atualiza                    |
+| Requer merge manual       |              ✅ Atualiza (Após o fetch)              |           ❌ Mantém (merge automático)           |
+| Risco de conflitos        |       ✅ Baixo (merge manual permite controle)       | ⚠️ Médio (merge automático pode gerar conflitos) |
+| Uso recomendado           | Quando deseja revisar mudanças antes de integrá-las |  Quando deseja integrar mudanças imediatamente  |
+
+
+
+## 💡 Exemplos Práticos
+### Exemplo 1: Usando git fetch --all
+
+
+```
+# Busca atualizações de todos os remotos configurados
+git fetch --all
+
+```
+
+```
+# Visualiza as diferenças entre a branch local e a remota
+git diff origin/main
+
+```
+
+
+```
+# Realiza o merge manual das mudanças
+git merge origin/main
+```
+
+
+### Exemplo 2: Usando git pull
+
+```
+# Busca e integra automaticamente as mudanças da branch remota
+git pull origin main
+```
+
+
+
+
+
+Resumo:
+![alt text](image-4.png)
+
+
+
+
+
+
+## ✅ Conclusão
+- ``git fetch --all:`` - Ideal para revisar mudanças antes de integrá-las ao seu trabalho. Proporciona maior controle e segurança, especialmente em ambientes colaborativos.​
+
+- ``git pull: Útil`` - Para integrar rapidamente as mudanças do repositório remoto. Deve ser usado com cautela, pois o merge automático pode gerar conflitos inesperados.
+
 
 
 
