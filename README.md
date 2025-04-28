@@ -1,19 +1,98 @@
+# ÍNDICE
+
+
 ## Índice
 
-1. [História do Controle de Versão](#história-do-controle-de-versão)  
-   1.1. Sistemas de Versionamento Centralizado  
-   1.2. Surgimento dos Sistemas Distribuídos  
-   1.3. Principais Marcos Históricos (RCS, CVS, SVN)  
-2. [Necessidade de Criação do Git](#necessidade-de-criação-do-git)  
-   2.1. Limitações de Ferramentas Anteriores  
-   2.2. Performance e Escalabilidade  
-   2.3. Fluxo de Trabalho Colaborativo Distribuído  
-   2.4. Segurança e Integridade do Histórico  
+
+- [ÍNDICE](#índice)
+  - [Índice](#índice-1)
+- [1. INTRODUÇÃO](#1-introdução)
+- [CRIANDO UM REPOSITÓRIO](#criando-um-repositório)
+- [VERIFICANDO ALTERAÇÕES](#verificando-alterações)
+  - [ESTADOS DE ARQUIVOS NO GIT](#estados-de-arquivos-no-git)
+- [Salvando arquivos no repositório](#salvando-arquivos-no-repositório)
+- [Github](#github)
+- [Recebendo alterações](#recebendo-alterações)
+- [Clonando Repositórios](#clonando-repositórios)
+- [Acessando Logs](#acessando-logs)
+- [Revertando arquivos](#revertando-arquivos)
+- [Ignorando arquivos](#ignorando-arquivos)
+- [Resetando arquivos da branch](#resetando-arquivos-da-branch)
+- [Atalhos](#atalhos)
+  - [Worspace](#worspace)
+    - [Detalhamento das Opções](#detalhamento-das-opções)
+- [``git reset --soft <commit>``](#git-reset---soft-commit)
+    - [⚠️ Considerações Importantes](#️-considerações-importantes)
+- [Branches](#branches)
+    - [🛠️ Comandos Básicos de Branch no Git](#️-comandos-básicos-de-branch-no-git)
+  - [Mesclando Branches](#mesclando-branches)
+  - [🧭 Fluxo de Trabalho com git merge](#-fluxo-de-trabalho-com-git-merge)
+  - [🔀 Tipos de Merge](#-tipos-de-merge)
+  - [⚠️ Conflitos de Merge](#️-conflitos-de-merge)
+- [Uso do git stash](#uso-do-git-stash)
+- [Revertando o stash](#revertando-o-stash)
+  - [🧰 Comandos Básicos do git stash](#-comandos-básicos-do-git-stash)
+  - [🎯 Considerações Importantes:](#-considerações-importantes)
+- [Uso de tags](#uso-de-tags)
+- [ENCONTRANDO BRANCHES](#encontrando-branches)
+  - [🔄 Diferença entre git fetch -a e git pull](#-diferença-entre-git-fetch--a-e-git-pull)
+    - [📌 git fetch -a](#-git-fetch--a)
+    - [📌 git pull](#-git-pull)
+  - [💡 Exemplos Práticos](#-exemplos-práticos)
+    - [Exemplo 1: Usando ``git fetch --all``](#exemplo-1-usando-git-fetch---all)
+    - [Exemplo 2: Usando git pull](#exemplo-2-usando-git-pull)
+  - [✅ Conclusão](#-conclusão)
+- [Garbage Collector do Git e como ele melhorara a performance](#garbage-collector-do-git-e-como-ele-melhorara-a-performance)
+- [Detalhando o Garbage Collector do Git?](#detalhando-o-garbage-collector-do-git)
+  - [Exemplo prático](#exemplo-prático)
+  - [Considerações Importantes](#considerações-importantes)
+- [GitPages](#gitpages)
+- [📚 Referências:](#-referências)
 
 
+# 1. INTRODUÇÃO
+A evolução dos sistemas de controle de versão iniciou-se com ferramentas locais e pré-históricas como o SCCS, passando pelos modelos centralizados de RCS, CVS e SVN nas décadas de 1980 e 1990, até chegar aos sistemas distribuídos (DVCS) a partir dos anos 2000, com projetos como BitKeeper, Mercurial e, sobretudo, Git em 2005 
+Wikipedia
+teamcoherence.com
+. Essa transição refletiu a crescente necessidade de colaboração simultânea, escalabilidade e integridade do histórico de alterações, motivando a migração de arquiteturas cliente-servidor para redes peer-to-peer, onde cada desenvolvedor dispõe de um repositório completo localmente 
+teamcoherence.com
+Wikipedia
+.
+
+1.1 Sistemas de Versionamento Centralizado
+Nos Sistemas de Versionamento Centralizado (CVCS), existe um repositório único hospedado em um servidor central, ao qual todos os clientes se conectam para obter (checkout) e enviar (commit) alterações 
+Wikipedia
+.
+
+Arquitetura Cliente-Servidor: o servidor mantém o histórico completo, enquanto os clientes trabalham em cópias de trabalho locais 
+Wikipedia
+.
+
+Controle de Acesso: impõe bloqueios ou mecanismos de concorrência para evitar alterações simultâneas no mesmo arquivo.
+
+Exemplos Históricos: além do SVN e CVS, precursores como o SCCS surgiram nos anos 1970, influenciando o desenvolvimento do RCS na década de 1980 
+initialcommit.com
+.
+
+1.2 Surgimento dos Sistemas Distribuídos
+Os Sistemas de Versionamento Distribuído (DVCS) eliminam o ponto único de falha ao permitir que cada clone contenha todo o histórico do projeto, proporcionando operações locais rápidas e maior flexibilidade no fluxo de trabalho 
+Wikipedia
+.
+
+BitKeeper (2000): um dos primeiros DVCS amplamente usados, adotado pelo kernel Linux até 2005; sua fase gratuita foi descontinuada em julho de 2005, o que motivou o desenvolvimento de alternativas livres 
+Wikipedia
+.
+
+Mercurial (abril/2005): criado por Matt (agora Olivia) Mackall como substituto do BitKeeper, focado em desempenho, simplicidade e extensibilidade 
+Wikipedia
+.
+
+Git (abril/2005): idealizado por Linus Torvalds para o kernel Linux, projetado para alta velocidade, robustez em merges e descentralização total 
+blog.tarynmcmillan.com
+.
 
 
-#Iniciando repositório
+#INICIANDO REPOSITÓRIO
 Ele cria uma pasta oculta chamada ``.git`` dentro do diretório do seu projeto, onde são armazenadas todas as informações de controle de versão, como histórico de commits e configurações.
 Como usar git init
 - Criar um novo repositório Git
@@ -43,14 +122,16 @@ Usamos o comando:
 
 
 
-# Criando um Repositório
+# CRIANDO UM REPOSITÓRIO
 Com isso você está iniciando um repositório dessa pasta que digitou git init.
 Todos arquivos dentro dessa pasta agora serão reconhecidos pelo Git como um projeto.
 
 
-# Verificando alterações
+# VERIFICANDO ALTERAÇÕES
 
-```git status```
+```bash
+git status
+```
 
 O Git classifica o estado de cada arquivo em distintas categorias, refletindo se estão sendo rastreados ou não, se sofreram modificações no diretório de trabalho ou se foram incluídos na área de elaboração (staging area), bem como outras situações especiais como renomeações, cópias e conflitos de mesclagem. Para inspecionar essas alterações em qualquer momento, os principais comandos são:
 
@@ -63,7 +144,7 @@ O Git classifica o estado de cada arquivo em distintas categorias, refletindo se
 
 
 
-## Estados de Arquivos no Git
+## ESTADOS DE ARQUIVOS NO GIT
 1.1. Arquivos Não Rastreáveis (Untracked)
 Arquivos não rastreados são aqueles presentes no diretório de trabalho que não fazem parte do último commit nem foram adicionados (git add) à área de preparo 
 Git
@@ -254,8 +335,8 @@ gitkraken.com
 # Branches
 Uma branch no Git representa uma linha independente de desenvolvimento dentro de um repositório. Ela permite que você trabalhe em novas funcionalidades, correções ou experimentações sem afetar diretamente o código principal, geralmente localizado na branch main ou master.​ 
 
-![alt text](image.png)
 
+![alt text](image-3.png)
 
 No Git, uma branch é essencialmente um ponteiro para um commit específico. Quando você cria uma nova branch, está criando uma nova linha de desenvolvimento que pode evoluir independentemente das outras. Isso é particularmente útil em ambientes colaborativos, onde diferentes desenvolvedores podem trabalhar simultaneamente em diversas funcionalidades sem interferência mútua.
 
@@ -500,7 +581,8 @@ git push origin --tags
 
 
 
-# Encontrando branches
+
+# ENCONTRANDO BRANCHES
 
 Para verificar se há ou não branches diferenças entre a remota e a local, caso houver, ele sincroniza os dois repositórios:
 
@@ -532,16 +614,16 @@ DevSecOps AI Platform
 
 
 ## 💡 Exemplos Práticos
-### Exemplo 1: Usando git fetch --all
+### Exemplo 1: Usando ``git fetch --all``
 
 
-```
+```bash
 # Busca atualizações de todos os remotos configurados
 git fetch --all
 
 ```
 
-```
+```bash
 # Visualiza as diferenças entre a branch local e a remota
 git diff origin/main
 
@@ -564,9 +646,8 @@ git pull origin main
 
 
 
-
 Resumo:
-![alt text](image-4.png)
+![alt text](image-5.png)
 
 
 
@@ -576,7 +657,81 @@ Resumo:
 ## ✅ Conclusão
 - ``git fetch --all:`` - Ideal para revisar mudanças antes de integrá-las ao seu trabalho. Proporciona maior controle e segurança, especialmente em ambientes colaborativos.​
 
-- ``git pull: Útil`` - Para integrar rapidamente as mudanças do repositório remoto. Deve ser usado com cautela, pois o merge automático pode gerar conflitos inesperados.
+- ``git pull:`` - Útil para integrar rapidamente as mudanças do repositório remoto. Deve ser usado com cautela, pois o merge automático pode gerar conflitos inesperados.
+
+
+
+
+
+# Garbage Collector do Git e como ele melhorara a performance
+
+
+O Garbage Collector do Git (comando git gc) é um utilitário de manutenção que executa tarefas como compactação de objetos, repack e remoção de objetos inalcançáveis para otimizar o repositório e liberar espaço em disco. Ele agrupa objetos soltos em packfiles e exclui aqueles que não estão referenciados por nenhuma branch, tag ou reflog há tempo suficiente (por padrão, 2 semanas).
+
+Embora o ``git gc`` seja invocado automaticamente em operações comuns (como commits, merges e fetches), também pode ser executado manualmente para forçar uma limpeza profunda do repositório.
+
+
+
+```bash
+
+git gc
+```
+
+#  Detalhando o Garbage Collector do Git?
+O Git armazena cada objeto (blobs, trees, commits) em discos usando hashes SHA-1 e, com o uso contínuo, surgem objetos “soltos” e packfiles fragmentados.
+
+![alt text](image-6.png)
+
+O processo de git gc reúne esses objetos soltos em packfiles eficientes e remove aqueles não alcançáveis a partir de referências ativas, evitando que o repositório cresça indefinidamente.
+
+
+
+## Exemplo prático
+
+1. Inspecionar objetos soltos antes do GC
+
+```bash
+# Exibe estatísticas de objetos soltos e uso de disco.
+git count-objects -vH
+```
+
+2. Executar coleta completa
+
+```bash
+# Força limpeza imediata de objetos inalcançáveis e compactação agressiva
+git gc --aggressive --prune=now
+
+```
+
+
+3. Verificar resultado após GC
+
+```bash
+# Confirma redução de objetos soltos e espaço utilizado.
+git count-objects -vH
+```
+
+
+
+
+
+
+| Comando             |                                        Função                                        |                 Opções Principais                 |
+| :------------------ | :----------------------------------------------------------------------------------: | :-----------------------------------------------: |
+| git gc              | Executa garbage collection padrão: compacta, empacota objetos e remove inalcançáveis |        --auto, --quiet, --prune=<data> Git        |
+| git gc --aggressive | Modo mais lento e completo: reavalia heurísticas de packing para máxima compactação  |                      N/A Git                      |
+| git prune           |        Remove objetos que não são alcançáveis a partir de qualquer referência        |                --expire=<data> Git                |
+| git repack          |     Recria packfiles combinando objetos soltos e existentes numa estrutura única     | -a (todos os objetos), -d (descartar antigos) Git |
+
+
+
+## Considerações Importantes
+- O git gc não deleta objetos referenciados por branches, tags, reflogs ou refs gerados por git filter-branch.
+- Configurações como gc.reflogExpire, gc.pruneExpire e gc.auto permitem ajustar a periodicidade e critérios de coleta.
+- Em repositórios grandes, recomenda-se executar git gc --auto periodicamente ou ajustar gc.auto=1000 e gc.autopacklimit=50 para balancear desempenho e manutenção. 
+
+
+Desta forma, O garbage collector do Git é essencial para manter repositórios limpos e performáticos, agrupando objetos e removendo dados órfãos, seja de forma automática ou manual.
 
 
 
