@@ -575,9 +575,10 @@ git push origin v1.0
 
 Já para enviar todas a tags:
 
-``
+```bash
+
 git push origin --tags
-``
+```
 
 
 
@@ -586,9 +587,9 @@ git push origin --tags
 
 Para verificar se há ou não branches diferenças entre a remota e a local, caso houver, ele sincroniza os dois repositórios:
 
-``
+``` git
 git fetch -a
-``
+```
 
 ## 🔄 Diferença entre git fetch -a e git pull
 ### 📌 git fetch -a
